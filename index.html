@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent Marker&effect=shadow-multiple">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie Flower">
+
+<script src="https://cdn.jsdelivr.net/npm/gojs/release/go.js"></script>
+
+
+   <script id="mycode">
+
+   	function init(){
+   		var $ = go.GraphObject.make;
+   		myDiagram = $(go.Diagram, "myDiagramDiv");
+
+   		var nodeDataArray=[
+   		  {key:"Alpha", color:"lime"},
+   		  {key:"Beta", color:"cyan"},
+   		  {key:"Zeta", isGroup: true},
+   		  {key: 'Delta', color:"pink", group: "Zeta"},
+   		  {key: 'Gamma', color: "maroon", group: "Zeta"}
+   		];
+
+   		var linkDataArray=[
+   		{to:"Beta", from:"Alpha", color:"red"},
+   		{from: "Alpha", to: "Zeta"}
+   		];
+   		myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
+   		myDiagram.nodeTemplate = 
+   		$(go.Node, "Auto", 
+   			$(go.Shape, "RoundedRectangle", {fill:"lightgray"}, 
+   			     new go.Binding("fill", "color")
+   			  ),
+
+   			$(go.TextBlock, "text", {margin: 10},
+   			new go.Binding("text", "key")
+   			)
+
+   			);
+
+   		myDiagram.linkTemplate = 
+   		$(go.Link, 
+   			$(go.Shape, {strokeWidth: 4}, 
+   				new go.Binding("stroke", "color")
+   				),
+   			
+   			$(go.Shape, {toArrow: "Standard", stroke: null},
+   				new go.Binding ("fill","color")
+   				)
+   			);
+   	}
+
+
+   			
+ 
+</script>
+
+
+<script id="code">
+
+   	function init(){
+   		var $ = go.GraphObject.make;
+   		diagram_new = $(go.Diagram, "myDiagram");
+
+   	diagram_new.nodeTemplate =
+    $(go.Node, "Spot",
+      $(go.Panel, "Auto",
+        $(go.Shape, "Rectangle",
+          { fill: "gold" },
+          new go.Binding("fill","color")),
+        $(go.TextBlock,
+          { margin: 5 },
+          new go.Binding("text","key"))
+      ),
+
+      $("TreeExpanderButton",
+        { alignment: go.Spot.Right, alignmentFocus: go.Spot.Center },
+        { visible: true }),
+      {
+        toolTip:  // define a tooltip for each node that displays the color as text
+          $("ToolTip",
+            $(go.TextBlock, { margin: 4 },
+              new go.Binding("text", "content"))
+          )  // end of Adornment
+      }
+    );
+  // a function that produces the content of the diagram tooltip
+  function diagramInfo(model) {
+    return "Model:\n" + model.nodeDataArray.length + " nodes, " +
+                        model.linkDataArray.length + " links";
+  }
+
+  // provide a tooltip for the background of the Diagram, when not over any Part
+  diagram_new.toolTip =
+    $("ToolTip",
+      $(go.TextBlock, { margin: 4 },
+        // use a converter to display information about the diagram model
+        new go.Binding("text", "", diagramInfo))
+    );
+
+
+
+    var nodeDataArray = [
+    {key:"Distribute Identity Card", color:"lightblue", content:"The Moderator distributes 12 identity cards to players.\n During COVID-19, you can send 12 scheduled emails to players \n and tell them their identity cards. \n (See more instructions at the 'Plan Your Game' section"},
+
+    {key:"Night Time", color:"lightgray", content:"All players close their eyes. \n If you are playing online, please mute your video and audio."},
+
+    {key:"Werewolves \n Special villagers \n wake up", color:"lightgray", content:"The Moderator asks all werewolves and special villagers \n to wake up in specific order (See the order below). \n If you are playing online, the moderator could send \n all werewolves and special villagers \n private messages on WhatsApp and asks them to take actions. "},
+
+    {key:"Day Time", color:"white", content:"All players open their eyes"},
+
+    {key:"Sheriff Election", color:"white", content:"The Moderator asks if anyone wants to run for sheriff election.\n Players who run for sheriff election then make statements about why they want to run for election. \n After everyone makes a statement, the Moderator then asks if anyone wants to quit. \n People who quit and people who run for election could not vote.\n The person that gets the most vote becomes sheriff.\n When the sheriff dies or get voted out, he/she can pass the badge on to any player or destroy the badge."},
+
+    {key:"Announce Death", color:"white", content:"The Moderator annouces who dies the first night. If no one dies, the Moderator annouces that the last night is safe."},
+
+    {key:"Discussion Time", color:"white", content:"The moderator announces that discussion begins.\n The sheriff could determine the speaking order and where to start \n (from the left or right of the person who dies that night). \n We recommend you not to interrupt each other during discussion"},
+
+    {key:"Vote", color:"white", content:"The sheriff could openly talk about who he/she wants to vote against.\n The person that sheriff votes against gets 0.5 more vote."},
+
+    {key:"Last Statement", color:"white", content:"The person that get voted out could leave a statement. Then, the game alternates back to night time"},
+
+    {key:"Second Night", color:"lightgray", content:"Werewolves and special villagers take action"},
+
+    {key:"Second Day\n and Go On", color:"white", content:"The person get killed by werewolf leave and could not leave a statement. \nThe sheriff picks a speaking order and then starts discussion."}
+
+    ];
+
+    var linkDataArray = [
+    {from: "Distribute Identity Card", to: "Night Time"},
+    {from:"Night Time", to:"Werewolves \n Special villagers \n wake up"},
+    {from:"Werewolves \n Special villagers \n wake up", to:"Day Time"},
+    {from:"Day Time", to:"Sheriff Election"},
+    {from:"Sheriff Election", to:"Announce Death"},
+    {from:"Announce Death", to:"Discussion Time"},
+    {from:"Discussion Time", to:"Vote"},
+    {from:"Vote", to:"Last Statement"}, 
+    {from:"Last Statement", to:"Second Night"}, 
+    {from:"Second Night", to:"Second Day\n and Go On"}, 
+
+
+    ];
+
+
+    diagram_new.layout = $(go.TreeLayout);
+    diagram_new.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
+}
+
+
+function intro() {
+   		var $ = go.GraphObject.make;
+   		diagram = $(go.Diagram, "myDiagramDivNew");
+
+
+ diagram.nodeTemplate =
+    $(go.Node, "Spot",
+      $(go.Panel, "Auto",
+        $(go.Shape, "RoundedRectangle",
+          { fill: "gold" },
+          new go.Binding("fill","color")),
+        $(go.TextBlock,
+          { margin: 5 },
+          new go.Binding("text","key"))
+      ),
+      $("TreeExpanderButton",
+        { alignment: go.Spot.Right, alignmentFocus: go.Spot.Center },
+        { visible: true })
+    );
+
+    var nodeDataArray = [
+    {key:"Pick a Setting", color:"lightblue"},
+    {key:"4 Werewolves \n Seer,Witch,Hunter,Idiot \n Mixed race boy \n 3 villagers", color:"gold"},
+    {key:"King of Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Guardian \n 4 villagers", color:"gold"},
+    {key:"King of Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Magician \n 4 villagers", color:"gold"},
+    {key:"White Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Knight \n 4 villagers", color:"gold"},
+    {key:"Beauty Pageant Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Knight \n 4 villagers", color:"gold"},
+    {key:"Gravestone Werewolf \n  3 Werewolves \n Graveyard Guard,Seer,Witch,Hunter \n 4 villagers", color:"gold"},
+    {key:"Werewolves -> Seer -> Witch -> Mixed race boy", color:"lightgray"},
+    {key:"Werewolves (including King of Werewolf) -> Guardian -> Seer -> Witch -> Hunter", color:"lightgray"},
+    {key:"Werewolves(including White Werewolf) -> Seer -> Witch -> Knight -> Hunter", color:"lightgray"},
+    {key:"Starting Second night: Graveyard Guard -> Gravestone Werewolf -> Three Werewolves -> Seer -> Witch -> Hunter", color:"lightgray"},
+    {key:"First Night: Graveyard Guard -> Gravestone Werewolf -> Three Werewolves -> Seer -> Witch -> Hunter -> Gravestone Werewolf", color:"lightgray"},
+    {key:"Werewolves (including the beauty pageant werewolf) -> Beauty Pagant werewolf wakes up again by herself -> Seer -> Witch -> Hunter -> Knight", color:"lightgray"},
+    {key:"Werewolves (including the King of Werewolf) -> Magician -> Seer -> Witch -> Hunter", color:"lightgray"}
+
+
+    ];
+
+    var linkDataArray = [
+    { from: "Pick a Setting", to: "4 Werewolves \n Seer,Witch,Hunter,Idiot \n Mixed race boy \n 3 villagers" },
+    { from: "Pick a Setting", to: "King of Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Guardian \n 4 villagers"},
+    { from: "Pick a Setting", to: "White Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Knight \n 4 villagers"},
+    { from: "Pick a Setting", to: "Gravestone Werewolf \n  3 Werewolves \n Graveyard Guard,Seer,Witch,Hunter \n 4 villagers"},
+    { from: "Pick a Setting", to: "Beauty Pageant Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Knight \n 4 villagers"},
+    { from: "Pick a Setting", to: "King of Werewolf\n3 Werewolves \n Magician,Seer,Witch,Hunter \n 4 villagers"},
+    { from: "Pick a Setting", to: "King of Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Magician \n 4 villagers", color:"gold"},
+
+
+    { from: "4 Werewolves \n Seer,Witch,Hunter,Idiot \n Mixed race boy \n 3 villagers", to:"Werewolves -> Seer -> Witch -> Mixed race boy"},
+    { from: "King of Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Guardian \n 4 villagers", to:"Werewolves (including King of Werewolf) -> Guardian -> Seer -> Witch -> Hunter"},
+    {from:"White Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Knight \n 4 villagers", to:"Werewolves(including White Werewolf) -> Seer -> Witch -> Knight -> Hunter"},
+    {from:"Gravestone Werewolf \n  3 Werewolves \n Graveyard Guard,Seer,Witch,Hunter \n 4 villagers", to:"First Night: Graveyard Guard -> Gravestone Werewolf -> Three Werewolves -> Seer -> Witch -> Hunter -> Gravestone Werewolf"},
+    {from:"Gravestone Werewolf \n  3 Werewolves \n Graveyard Guard,Seer,Witch,Hunter \n 4 villagers", to:"Starting Second night: Graveyard Guard -> Gravestone Werewolf -> Three Werewolves -> Seer -> Witch -> Hunter"},
+    {from:"Beauty Pageant Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Knight \n 4 villagers", to:"Werewolves (including the beauty pageant werewolf) -> Beauty Pagant werewolf wakes up again by herself -> Seer -> Witch -> Hunter -> Knight"},
+    {from:"King of Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Magician \n 4 villagers", to:"Werewolves (including the King of Werewolf) -> Magician -> Seer -> Witch -> Hunter"}
+
+
+  ];
+
+  diagram.layout = $(go.TreeLayout);
+
+  diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
+}
+
+window.addEventListener("load", myInit, true); function myInit(){ 
+	init();
+	intro();
+}
+
+</script>
+
+
+
+</head>
+
+
+<style>
+body{
+	font-family: 'Indie Flower', serif;
+}
+
+.normal-word {
+	font-family: 'Caveat', serif;
+	font-size: 24px;
+	margin:0.5em;
+}
+.title-img img {
+  width: 100%;
+  opacity: 0.7;
+}
+
+.topheader {
+	font-family: 'Permanent Marker', serif;
+	text-align: center;
+	font-size:64px;
+}
+
+
+.secondheader {
+	font-family: 'Permanent Marker', serif;
+	text-align: left;
+	font-size:30px;
+}
+
+.introfont{
+	font-family: 'caveat', serif;
+	font-size:22px;
+}
+
+/*.img-small img {
+  opacity: 0.85;
+  border-radius: 50%;
+}
+*/
+
+.grid-container {
+  display: grid;
+  grid-column-gap: 50px;
+  grid-template-columns: auto auto auto;
+  padding: 5px;
+}
+
+.grid-item {
+  padding: 20px;
+  text-align: center;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #E48411;
+  color: white;
+}
+
+figure {
+	display: inline-block;
+    margin:5px; /* adjust as needed */
+
+}
+
+figure img {
+	vertical-align: top;
+    opacity: 0.85;
+    border-radius: 50%;
+    transform: rotateY(180deg);
+}
+figure figcaption {
+    border: 3px dotted darkblue;
+    text-align: center;
+    font-family: 'Caveat', serif;
+    font-size:22px;
+}
+
+
+.flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+  list-style: none;
+  
+  /* Then we define the flow direction 
+     and if we allow the items to wrap 
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+
+  
+  padding: 0;
+  margin: 0.5em;
+}
+
+.flex-item {
+  padding: 5px;
+  height: 150px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+  flex: 0 0 220px; /* don't grow, don't shrink, stay at 220px width */
+}
+
+
+.break {
+  flex-basis: 100%;
+  height: 8em;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin:20px;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #40434B;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+p{
+	margin-left:5pt;
+	margin-right:3pt;
+}
+
+</style>
+
+<body onload="myInit()">
+
+<div class="topnav">
+  <a class="active" href="#home">Introduction</a>
+  <a href="#Start Game">Plan Your Game</a>
+  <a href="#Moderator Guide">Start Playing</a>
+  <a href="#Contact">Moderator Guide</a>
+  <a href="#Contact">Acknowledgement</a>
+</div>
+
+<div class="title-img">
+<img src="Pictures/bg.jpg" alt="Responsive image"> <br><br><br>
+</div>
+
+<div class="topheader">
+<p class="font-effect-shadow-multiple">Introduction of "Werewolf Kill"</p>
+</div>
+
+<div class="secondheader">
+<p>Set Up</p>
+</div>
+
+<div class="normal-word">
+<p> The game is played by 13 people, including 1 moderator, 4 villagers, 4 special villagers, and 4 werewolves. </p>
+<br>
+<p> Werewolf team winning condition: Kill all villagers OR all special villagers. </p>
+<br>
+<p> Villager/special villagers winning condition: Vote out all werewolves. </p>
+</div>
+
+
+<div class="secondheader">
+<p>Game Organization</p>
+</div>
+<div class="normal-word">
+<p>Below is a flow chart that shows you the organization of this game. Check the detail instruction in tooltips!</p>
+</div>
+<div id="myDiagram" style="width:1450px; height:200px;border: 0.5px dotted"></div>
+
+
+
+<div class="secondheader">
+<p>Wakeup Order</p>
+</div>
+<div id="myDiagramDivNew" style="width:1450px; height:600px; border: 0.5px dotted"></div>
+
+<div class="secondheader">
+<p>Special villagers</p>
+</div>
+
+
+<ul class="flex-container">
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+		<li class="flex-item">
+			<figure>
+				<img src="Pictures/seer.jpg" alt="Responsive image" width=150 height=140>
+				<figcaption>The Seer</figcaption>
+			</figure>
+		</li>
+
+		</div>
+
+		<div class="flip-card-back">
+			<br>
+			<p>&nbsp;&nbsp;The seer is an important villager. She could wake up at night and check a person&rsquo;s card.  </p><br>
+			<p>&nbsp;&nbsp;But the seer&rsquo;s vision is not perfect. She could only tell if a person is a werewolf, which means that she does not have the ability to tell the differences between werewolves or the differences between special villagers and villagers.  </p><br>
+			<p>&nbsp;&nbsp;Most of the times, the seer reveals her own identity to give out correct information for the villagers even though this often risks her own life. 
+		</div>
+	</div>
+</div>
+
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+				<figure>
+					<img src="Pictures/witch2.jpeg" alt="Responsive image" width=150 height=140>
+				<figcaption>The Witch</figcaption>
+			    </figure>
+			</li>
+		</div>
+
+	<div class="flip-card-back">
+		<br>
+		<p>&nbsp;&nbsp;The witch has two potions&mdash;one potion can save almost anyone, the other potion can kill anyone. Both potions could only be used one time in the whole game and could not be used at the same time. </p> 
+		<p>&nbsp;&nbsp;When the witch wakes up, she gets information from the moderator about who is the person get eaten by werewolves and then decides whether she wants to use her potions or not. </p>
+		<p>When she get killed, she can decides if she wants to use her potion to kill a player. But she cannot save herself. 
+	</div>
+	</div>
+</div>
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+				<figure>
+					<img src="Pictures/hunter2.jpg" alt="Responsive image" width=150 height=140>
+					<figcaption>The Hunter</figcaption>
+				</figure>
+			</li>
+		</div>
+	<div class="flip-card-back">
+		<br>
+		<p>&nbsp;&nbsp; The hunter can shoot his gun and kill a player whenever he dies. </p>
+		<p>&nbsp;&nbsp; But the hunter could not use his power if he gets poisoned by the witch. Also, if the hunter is the only remaining special villager and get killed by werewolf, the werewolf team wins. </p>
+	</div>
+</div>
+
+
+</div>
+
+
+<div class="break"></div> <!-- break -->
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+				<figure>
+					<img src="Pictures/guardian2.png" alt="Responsive image" width=150 height=140>
+					<figcaption>The Guardian</figcaption>
+				</figure>
+			</li>
+		</div>
+	<div class="flip-card-back">
+		<br>
+		<p>&nbsp;&nbsp; The guardian wakes up at night and could use his special power to protect any players, including himself and the witch from werewolves. </p>
+		<p>&nbsp;&nbsp; He could use his power every night, but he does not have the ability to protect the same player in two consecutive nights.  </p>
+		<p>&nbsp;&nbsp; The guardian does not share information with the witch at night. If he happens to protect the player that later saved by the witch, the player still dies. </p>
+	</div>
+</div>
+</div>
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+		<li class="flex-item">
+		<figure>
+			<img src="Pictures/magician2.jpeg" alt="Responsive image" width=150 height=140>
+			<figcaption>The Magician</figcaption>
+		</figure>
+	    </li>
+	</div>
+
+	<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp;The magician wakes up at night and could switch two numbers, including his own. He could use his power every night, but all players could only be switched one time and the swtich is only valid for that night.</p>
+	<p>&nbsp;&nbsp;For example, if the magician switches player No.5 and player No.3, and werewolves eat player No.3, player No.5 would end up dying. If the seer checks player No.3, the seer ends up seeing the identity of player No.5. (Same for the witch) </p>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+			<figure>
+			<img src="Pictures/graveyard_guard2.jpeg" alt="Responsive image" width=150 height=140>
+			<figcaption>The Graveyard Guard</figcaption>
+		    </figure>
+		    </li>
+		</div>
+
+		<div class="flip-card-back">
+		<br>
+		<p>&nbsp;&nbsp;The graveyard guard wakes up at night and has the ability to know the real identity of the player get voted out at day time. </p>
+	    </div>
+	</div>
+</div>
+
+
+<div class="break"></div> <!-- break -->
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+			<figure>
+			<img src="Pictures/knight2.jpeg" alt="Responsive image" width=150 height=140>
+			<figcaption>The Knight</figcaption>
+		    </figure>
+		    </li>
+		</div>
+	<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp;The knight can challenge a player during discussion or sheriff election (not during voting). If the player is a werewolf, the player immediately dies and discussion continues. But if the player is not a werwolf, the knight dies of shame. He could only use his power one time in the whole game.  </p>
+	<p>&nbsp;&nbsp;The knight usually has to make quick decisions with limited information. If the knight get poisoned by the witch, he could not use his power. 
+	</div>
+</div>
+</div>
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+
+			<figure>
+			<img src="Pictures/theidiot2.png" alt="Responsive image" width=150 height=140>
+			<figcaption>The Idiot</figcaption>
+		    </figure>
+		    </li>
+		 </div>
+	<div class="flip-card-back">
+	<br>
+	<p> &nbsp;&nbsp; The idiot is a weak special villager. If he get killed by werewolf at night, he dies like ordinary villager. But if he gets voted out, he could reveal his own identity and remain in the village. But if once he gets voted out, he loses his power to vote. </p>
+    </div>
+</div>
+</div>
+
+
+
+</ul>
+
+<div class="break"></div> <!-- break -->
+
+
+
+<div class="secondheader">
+<p>Werewolves</p>
+</div>
+
+<ul class="flex-container">
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+				<figure>
+					<img src="Pictures/whitewerewolf2.png" alt="Responsive image" width=150 height=140>
+					<figcaption>The White Werewolf</figcaption>
+				</figure>
+			</li>
+		</div>
+	<div class="flip-card-back">
+		<br>
+		<p>&nbsp;&nbsp; The white werewolf is a suicide-bomber in the werewolf team. </p>
+		<p>&nbsp;&nbsp; He wakes up with ordinary werewolves and could explode himself during discussion (not during voting) and then immediately kills a player. After the explosion of white werewolf, discussion immediately ends and the game alternate from day time to night time. </p>
+	</div>
+</div>
+</div>
+
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+		<li class="flex-item">
+		<figure>
+			<img src="Pictures/kingofwerewolf2.png" alt="Responsive image" width=150 height=140>
+			<figcaption>King of werewolf</figcaption>
+		</figure>
+	    </li>
+	</div>
+
+	<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp;King of werewolf could kill a player whenever he gets voted out. </p>
+	<p>&nbsp;&nbsp;Most of the time, king of werewolf would claim that he is the seer. If the real seer reveals her own identity and persuades the village to vote the fake seer, king of werewolf can use this opportunity to get himself voted out and take away a player. </p>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+		<li class="flex-item">
+
+		<figure>
+		<img src="Pictures/hiddenwerewolf2.png" alt="Responsive image" width=150 height=140>
+		<figcaption>Half-blood Werewolf</figcaption>
+	    </figure>
+	    </li>
+
+	   </div>
+
+	<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp;Half-blood werewolf is a child between a werewolf and a human. He desperately wants to find his werewolf teammates and protect them. </p>
+	<p>&nbsp;&nbsp; He does not wake up with his werewolf teammates during night time. When the seer checks his card, he seems as normal as other villagers and special villagers.</p>
+	<p>&nbsp;&nbsp; If all werewolves get voted out and the half-blood werewolf is the only werewolf remains, the werewolf team loses. </p>
+
+</div>
+</div>
+</div>	   
+
+<div class="break"></div> <!-- break -->
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+			<figure>
+			<img src="Pictures/stonewerewolf2.jpeg" alt="Responsive image" width=150 height=140>
+			<figcaption>Graveyard Stone Werewolf</figcaption>
+		    </figure>
+		    </li>
+		</div>
+
+	<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp;The gravestone werewolf wakes up by himself. He can check a player&rsquo;s card at night time and know the player&rsquo;s exact identity.</p>
+	<p>&nbsp;&nbsp;After all werewolves get voted out, the moderator would tell the gravestone werewolf that he has been brough back to life and can now kill players. </p>
+	<p>&nbsp;&nbsp; Even though the gravestone werewolf is very powerful, he might accidentally get killed by his werewolf teammates.</p>
+</div>
+</div>
+</div>
+
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+				<figure>
+
+					<img src="Pictures/beautywerewolf.jpeg" alt="Responsive image" width=150 height=140>
+					<figcaption>The Beauty Pageant Werewolf</figcaption>
+				</figure>
+			</li>
+		</div>
+		<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp;The beauty pageant werewolf wakes up with her werewolf teammates. She can allure a player at night time. If the beauty pageant werewolf get poisoned by the witch, killed by the hunter, or voted out by the village, the player that she allures in the previous night die with her. </p>
+	<p>&nbsp;&nbsp;If she get challenged by the knight, she could not use her power. </p>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+				<figure>
+
+				<img src="Pictures/evil_knight2.jpeg" alt="Responsive image" width=150 height=140>
+				<figcaption>The Evil Knight</figcaption>
+			    </figure>
+			</li>
+		</div>
+	<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp;The evil knight wakes up with his werewolf teammates. When the special villagers use their power on him, the special villagers die. If more than one special villagers use their power on him, he can only kill the first special villager. The evil knight can only use his power one time in the whole game. </p>
+	<p>&nbsp;&nbsp; The guardian and the witch could not save anyone from the evil knight. For example, if the seer dies because she checks the card of the evil knight, both the guardian and the witch are allowed to use their power, but it won't has any effects. </p>
+    </div>
+
+</div>
+</div>
+
+
+
+<div class="break"></div> <!-- break -->
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+
+				<figure>
+					<img src="Pictures/baddreammaker.jpeg" alt="Responsive image" width=150 height=140>
+					<figcaption>The Bad Dream Maker</figcaption>
+				</figure>
+
+			</li>
+		</div>
+	<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp;The bad dream maker can give bad dream to a player at night. If the player happens to be a special villager, the player loses his power that night. The bad dream maker could not use his power against the same player in two consecutive nights.</p>
+	<p>&nbsp;&nbsp; The bad dream maker wakes up by himself first, and then with his werewolf teammates. If in the first night, the bad dream maker gives bad dream to his werewolf teammates, the whole werewolf team could not take any action that night. </p>
+	</div>
+</div>
+</div>
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+
+				<figure>
+					<img src="Pictures/blackbat2.jpeg" alt="Responsive image" width=150 height=140>
+					<figcaption>The Black Bat</figcaption>
+				</figure>
+			</li>
+		</div>
+	<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp; The black bat is a very strong role in the werewolf team. He wakes up with his werewolf teammates and can protect a player at night. If the player that he protects get poisoned by the witch, the witch dies; if the player also get protected by the guardian, the guardian dies. After the black bat successfully uses his power to kill a player, he could not use his power again. </p>
+	<p>&nbsp;&nbsp; He can protect himself, but he could not protect the same player for more than one time. </p>
+</div>
+</div>
+</div>
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+
+			<figure>
+			<img src="Pictures/werewolf2.png" alt="Responsive image" width=150 height=140>
+			<figcaption>Werewolf</figcaption>
+		    </figure>
+		    </li>
+		 </div>
+	<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp; The ordinary werewolf does not have special power. He wakes up at night and eat a person with his werewolf teammates. </p>
+	<p>&nbsp;&nbsp; During day time, ordinary werewolf could explode, immediately end discussion, and alternate the game to night time. He could not explode during voting period.
+	</p> 
+</div>
+</div>
+</div>
+
+
+</ul>
+
+<div class="break"></div> <!-- break -->
+
+<div class="secondheader">
+<p>Villager and Others</p>
+</div>
+
+<ul class="flex-container">
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<ul class="flex-container">
+			<li class="flex-item">
+			<figure>
+			<img src="Pictures/villager2.jpeg" alt="Responsive image" width=150 height=140>
+			<figcaption>Villager</figcaption>
+		   </figure>
+		   </li>
+		</div>
+	<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp; villagers do not wake up at night. </p>
+	<p>&nbsp;&nbsp; They could vote and talk about their opinions during day time. When all the villagers get killed, the werewolf team win. </p>
+</div>
+</div>
+</div>
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<ul class="flex-container">
+				<li class="flex-item">
+				<figure>
+				<img src="Pictures/cupid.jpeg" alt="Responsive image" width=150 height=140>
+				<figcaption>The Cupid</figcaption>
+			    </figure>
+			    </li>
+			</div>
+	<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp; The cupid wakes up at night and uses his power to connect two players together. </p>
+	<p>&nbsp;&nbsp; The two players he connects can then wake up by the moderator, but they could not reveal their identities cards to each other. </p>
+	<p>&nbsp;&nbsp; If the two players that the cupid connects are villagers or special villager, they all play for the villager team; if the two players are werewolves, they all play for the werewolf team. But if one player is a villager or special villager, and the other player is a werewolf, they become a third party and have different winning condition. </p>
+
+</div>
+</div>
+</div>
+
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+
+			<li class="flex-item">
+			<figure>
+			<img src="Pictures/mixedraceboy2.jpeg" alt="Responsive image" width=150 height=140>
+			<figcaption>The Mixed Race Boy </figcaption>
+		    </figure>
+		    </li>
+		 </div>
+	<div class="flip-card-back">
+	<br>
+	<p>&nbsp;&nbsp; The mixed race boy wakes up at night by himself and picks a player to be his role model. His winning condition is the same as his role model. </p>
+	<p>&nbsp;&nbsp; The mixed race boy could not know the identity of his role model from the moderator. When he picks a werewolf, he does not wake up with his werewolf teammates. </p>
+	<p>&nbsp;&nbsp; Whenever the seer checks his identity, he always seems as normal as other villagers even after he picks werewolf as his role model. </p>
+
+</div>
+</div>
+</div>
+
+
+</ul>
+
+</body>
+
+</html>
+
