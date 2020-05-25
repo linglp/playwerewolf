@@ -179,13 +179,13 @@ function intro() {
 
     var nodeDataArray = [
     {key:"Pick a Setting", color:"lightblue"},
-    {key:"4 Werewolves \n Seer,Witch,Hunter,Idiot \n Mixed race boy \n 3 villagers", color:"gold"},
+    {key:"4 Werewolves \n Seer,Witch,Hunter,Idiot \n Apprentice \n 3 villagers", color:"gold"},
     {key:"King of Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Guardian \n 4 villagers", color:"gold"},
     {key:"King of Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Magician \n 4 villagers", color:"gold"},
     {key:"White Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Knight \n 4 villagers", color:"gold"},
     {key:"Beauty Pageant Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Knight \n 4 villagers", color:"gold"},
     {key:"Gravestone Werewolf \n  3 Werewolves \n Graveyard Guard,Seer,Witch,Hunter \n 4 villagers", color:"gold"},
-    {key:"Werewolves -> Seer -> Witch -> Mixed race boy", color:"lightgray"},
+    {key:"Werewolves -> Seer -> Witch -> Apprentice", color:"lightgray"},
     {key:"Werewolves (including King of Werewolf) -> Guardian -> Seer -> Witch -> Hunter", color:"lightgray"},
     {key:"Werewolves(including White Werewolf) -> Seer -> Witch -> Knight -> Hunter", color:"lightgray"},
     {key:"Starting Second night: Graveyard Guard -> Gravestone Werewolf -> Three Werewolves -> Seer -> Witch -> Hunter", color:"lightgray"},
@@ -197,7 +197,7 @@ function intro() {
     ];
 
     var linkDataArray = [
-    { from: "Pick a Setting", to: "4 Werewolves \n Seer,Witch,Hunter,Idiot \n Mixed race boy \n 3 villagers" },
+    { from: "Pick a Setting", to: "4 Werewolves \n Seer,Witch,Hunter,Idiot \n Apprentice \n 3 villagers" },
     { from: "Pick a Setting", to: "King of Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Guardian \n 4 villagers"},
     { from: "Pick a Setting", to: "White Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Knight \n 4 villagers"},
     { from: "Pick a Setting", to: "Gravestone Werewolf \n  3 Werewolves \n Graveyard Guard,Seer,Witch,Hunter \n 4 villagers"},
@@ -206,7 +206,7 @@ function intro() {
     { from: "Pick a Setting", to: "King of Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Magician \n 4 villagers", color:"gold"},
 
 
-    { from: "4 Werewolves \n Seer,Witch,Hunter,Idiot \n Mixed race boy \n 3 villagers", to:"Werewolves -> Seer -> Witch -> Mixed race boy"},
+    { from: "4 Werewolves \n Seer,Witch,Hunter,Idiot \n Apprentice \n 3 villagers", to:"Werewolves -> Seer -> Witch -> Apprentice"},
     { from: "King of Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Guardian \n 4 villagers", to:"Werewolves (including King of Werewolf) -> Guardian -> Seer -> Witch -> Hunter"},
     {from:"White Werewolf \n 3 Werewolves \n Seer,Witch,Hunter,Knight \n 4 villagers", to:"Werewolves(including White Werewolf) -> Seer -> Witch -> Knight -> Hunter"},
     {from:"Gravestone Werewolf \n  3 Werewolves \n Graveyard Guard,Seer,Witch,Hunter \n 4 villagers", to:"First Night: Graveyard Guard -> Gravestone Werewolf -> Three Werewolves -> Seer -> Witch -> Hunter -> Gravestone Werewolf"},
@@ -418,10 +418,10 @@ p{
 
 <div class="topnav">
   <a class="active" href="#home">Introduction</a>
-  <a href="#Start Game">Plan Your Game</a>
-  <a href="#Moderator Guide">Start Playing</a>
-  <a href="#Contact">Moderator Guide</a>
-  <a href="#Contact">Acknowledgement</a>
+  <a href="#StartGame">Plan Your Game</a>
+  <a href="#ModeratorGuide">Moderator Guide</a>
+  <a href="#Acknowledgement">Acknowledgement</a>
+  <a href="#Others">Other resources</a>
 </div>
 
 <div class="title-img">
@@ -519,7 +519,7 @@ p{
 
 			<li class="flex-item">
 				<figure>
-					<img src="Pictures/hunter2.jpg" alt="Responsive image" width=150 height=140>
+					<img src="Pictures/Hunter2.jpg" alt="Responsive image" width=150 height=140>
 					<figcaption>The Hunter</figcaption>
 				</figure>
 			</li>
@@ -595,7 +595,7 @@ p{
 
 		<div class="flip-card-back">
 		<br>
-		<p>&nbsp;&nbsp;The graveyard guard wakes up at night and has the ability to know the real identity of the player get voted out at day time. </p>
+		<p>&nbsp;&nbsp;The graveyard guard can know the identities of players get voted out by the village. He can use his power every night as long as he is alive. </p>
 	    </div>
 	</div>
 </div>
@@ -643,6 +643,24 @@ p{
 </div>
 
 
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+
+      <li class="flex-item">
+
+      <figure>
+      <img src="Pictures/fourtuneteller2.jpeg" alt="Responsive image" width=150 height=140>
+      <figcaption>The Fourtune Teller</figcaption>
+        </figure>
+        </li>
+     </div>
+  <div class="flip-card-back">
+  <br>
+  <p> &nbsp;&nbsp; The Fourtune Teller wakes up and picks a number. That night, werewolves can only kill the players next to that number. For example, if the fourtune teller picks 11, werewolves team can only kill player 10, player 11, or player 12. If the range that the fourtune teller defines include three werewolves, werewolves can give up killing or kill a teammate.  </p>
+    </div>
+</div>
+</div>
 
 </ul>
 
@@ -840,6 +858,50 @@ p{
 </div>
 </div>
 
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+
+      <li class="flex-item">
+
+        <figure>
+          <img src="Pictures/parasite.jpg" alt="Responsive image" width=150 height=140>
+          <figcaption>The Parasite Werewolf</figcaption>
+        </figure>
+      </li>
+    </div>
+  <div class="flip-card-back">
+  <br>
+  <p>&nbsp;&nbsp; The Parasite werewolf can turn a victim from the villager and special villager team to a werewolf. The victim that becomes a werewolf can wake up with werewolf teammates and kill in later rounds. </p>
+</div>
+</div>
+</div>
+
+<div class="break"></div> <!-- break -->
+
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+
+      <li class="flex-item">
+
+        <figure>
+          <img src="Pictures/thegraywerewolf2.jpeg" alt="Responsive image" width=150 height=140>
+          <figcaption>The Big Bad Werewolf</figcaption>
+        </figure>
+      </li>
+    </div>
+  <div class="flip-card-back">
+  <br>
+  <p>&nbsp;&nbsp; The big bad werewolf wakes up by himself. He knows his werewolf teammates, but he does not share information with them. He can kill a player in one round by himself. </p>
+</div>
+</div>
+</div>
+
+
+
 <div class="flip-card">
 	<div class="flip-card-inner">
 		<div class="flip-card-front">
@@ -922,14 +984,14 @@ p{
 			<li class="flex-item">
 			<figure>
 			<img src="Pictures/mixedraceboy2.jpeg" alt="Responsive image" width=150 height=140>
-			<figcaption>The Mixed Race Boy </figcaption>
+			<figcaption>The Apprentice </figcaption>
 		    </figure>
 		    </li>
 		 </div>
 	<div class="flip-card-back">
 	<br>
-	<p>&nbsp;&nbsp; The mixed race boy wakes up at night by himself and picks a player to be his role model. His winning condition is the same as his role model. </p>
-	<p>&nbsp;&nbsp; The mixed race boy could not know the identity of his role model from the moderator. When he picks a werewolf, he does not wake up with his werewolf teammates. </p>
+	<p>&nbsp;&nbsp; The apprentice wakes up at night by himself and picks a player to be his role model. His winning condition is the same as his role model. </p>
+	<p>&nbsp;&nbsp; The apprentice could not know the identity of his role model from the moderator. When he picks a werewolf, he does not wake up with his werewolf teammates. </p>
 	<p>&nbsp;&nbsp; Whenever the seer checks his identity, he always seems as normal as other villagers even after he picks werewolf as his role model. </p>
 
 </div>
