@@ -95,11 +95,13 @@ function checkwin () {
     echo "";
    }
 
-   $query_one = "SELECT actual_death,victim_challenged,victim_poisoned,victim_out,werewolf_exploded,whitewerewolf_exploded FROM whitewerewolf";
+   $query_one = "SELECT actual_death,victim_poisoned,victim_out,werewolf_exploded,whitewerewolf_exploded FROM whitewerewolf";
    $query_two = "SELECT * FROM whitewerewolf WHERE TIME='night1'";
+   $query = "SELECT victim_challenged FROM whitewerewolf WHERE victim_challenged IS NOT NULL";
 
    $ret = pg_query($db,$query_one);
    $ret_new = pg_query($db,$query_two);
+   $ret_knight=pg_query($db, $query);
    $row_num=pg_num_rows($ret);
 
    if ($row_num > 0) {
@@ -108,26 +110,33 @@ function checkwin () {
    $dead = pg_fetch_all($ret);
 
 
-   //check if the white werewolf has exploded 
-   $num_werewolf = 0; 
-
-   foreach ($dead as $lines) {
-      if ($lines['whitewerewolf_exploded'] == NULL) {
-
-         $num_werewolf = 0; 
-
-      } else {
-         $num_werewolf = $num_werewolf +1;
-      // if the whitewerewolf has exploded, then there are still three werewolves remain. 
-      }
-   }
-
    // Get ready to count.
+
    $num_villager = 0;
    $num_special = 0;
+   $num_werewolf = 0;
+
+
+   //check if the white werewolf has exploded 
+
+   foreach ($dead as $lines) {
+
+
+      if ($lines['whitewerewolf_exploded'] != NULL) {
+
+         $num_werewolf = 1; 
+
+      }
+
+      // if the whitewerewolf has exploded, then there are still three werewolves remain. 
+      // Be super careful not to add an "else" statement. 
+      // If $lines["whitewerewolf_exploded"] has one value, that means the whitewerewolf uses power. So $num_werewolf should be equal to 1. 
+
+   }
 
    //get ready for werewolf arrays, villager array, and special villager array. 
    while ($row = pg_fetch_row($ret_new)) {
+
 
       $werewolves = array($row[1], $row[2], $row[3], $row[4]);
 
@@ -139,6 +148,28 @@ function checkwin () {
    $size = count($dead);
 
 
+   //check if the Knight died or the player that the Knight challenged died
+
+   //if the player that that the Knight challenged was a werewolf, the werewolf died. So num_werewolf +1; 
+
+   while ($row = pg_fetch_row($ret_knight)) {
+      if(in_array($row[0], $werewolves, true)) {
+
+         $num_werewolf = $num_werewolf +1;
+      } 
+
+   //if the player the that Knight challenged was a special villager or a villager, thhe knight died of shame. So num_special =1 
+      else {
+         $num_special = 1;
+      }
+   }
+
+
+
+   //check if the player that the Knight challenges is a werewolf: 
+
+
+
    for ($i=0; $i < $size; $i++) {
 
 
@@ -147,27 +178,32 @@ function checkwin () {
    
    foreach ($dead[$keys[$i]] as $key => $value) {
 
-      //echo "$value";
-      //here, it prints out all value within columns
 
+
+      // echo "$value";
+      //here, it prints out all value within columns
 
       //skip empty columns 
       if ("$value" != "") {
+
       if (in_array("$value", $werewolves, true)) {
          $num_werewolf=$num_werewolf +1 ;
+
       } elseif(in_array("$value", $special_villager, true)) {
          $num_special = $num_special + 1; 
+
       } else {
          $num_villager = $num_villager + 1;
       }
    }
-   
 
 
    }
 
 } 
 //here is end of for loop 
+
+
 
 //Here you can print out number of werewolf, number of villagers, and number of special villagers die 
 // echo $num_werewolf;

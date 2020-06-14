@@ -1,0 +1,27 @@
+.hide {
+  display: none;
+}
+
+input[type=submit] {
+  background-color: #0F559E;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #7D0B5F;
+}
+
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color:#FAD7A0;
+  padding: 15px;
+  font-size: 20px;
+}
+

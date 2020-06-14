@@ -2,18 +2,18 @@
 
 progress("reveal_death_one", 'night1');
 
-progress("reveal_death_two", 'night2');
+progress("reveal_death2", 'night2');
 
-progress("reveal_death_three", 'night3');
+progress("reveal_death3", 'night3');
 
-progress("reveal_death_four", 'night4');
-
-
+progress("reveal_death4", 'night4');
 
 
-function progress($reveal_death_two, $night_num) {
 
-if (isset($_POST[$reveal_death_two])) {
+
+function progress($reveal_death, $night_num) {
+
+if (isset($_POST[$reveal_death])) {
 
   $host        = "host = localhost";
   $port        = "port = 5432";
@@ -69,6 +69,7 @@ if (isset($_POST[$reveal_death_two])) {
      // werewolves and witch kill at the same time; 
      elseif ($row[0] != $row[1] && $row[0]!=$row[2] && !empty($row[3])) {
       echo "Yesterday, the player that died was/were: $row[0] and $row[3]";
+      $ret_sec = pg_send_query($db, "INSERT INTO whitewerewolf (ACTUAL_DEATH) VALUES ('$row[0]')");
      } else {
       echo "Yesterday, the player that died was/were: $row[0]";
       $ret_sec = pg_send_query($db, "INSERT INTO whitewerewolf (ACTUAL_DEATH) VALUES ('$row[0]')");
