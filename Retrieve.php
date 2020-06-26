@@ -42,8 +42,8 @@ if (isset($_POST[$reveal_death])) {
 
  
    while ($row_val = pg_fetch_row($ret_two)) {
-    if ( empty($row_val[9]) ) {
-      echo "Something went wrong. Please check if you have submitted the record of the second night correctly.";
+    if ( empty($row_val[0]) ) {
+      echo "Something went wrong. Please check if you have submitted the record of the second night correctly. You can go back to the previous night and resubmit. ";
    } else {
 
     while ($row = pg_fetch_row($ret)) {

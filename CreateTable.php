@@ -1,15 +1,37 @@
 
 <?php
+
    $host        = "host = localhost";
    $port        = "port = 5432";
    $dbname      = "dbname = werewolf";
    $credentials = "user = postgres";
 
-   $db = pg_connect( "$host $port $dbname $credentials"  );
+
+// If I end up using proxy: 
+
+   // Use a Data source name (DSN) to connect to Cloud SQL through the proxy
+   
+   //$dsn = 'pgsql:dbname=werewolf;host=/cloudsql/werewolf-278317:us-east1:werewolf';
+
+   // Instantiate your DB using the DSN, username, and password
+   // $dbUser = 'linglp';
+   // $dbPass = '123qwe';
+
+
+
+   // try {
+   //    $db = new PDO($dsn, $dbUser, $dbPass);
+   //    echo " ";
+   // } catch (PDOException $e) {
+   //     echo 'Connection failed: ' . $e->getMessage();
+   // }
+
+   $db = pg_connect( "$host $port $dbname $credentials");
+
    if(!$db) {
       echo "Error : Unable to open database\n";
    } else {
-      echo "Opened database successfully\n";
+      echo " ";
    }
 
    $query_string = "DROP TABLE IF EXISTS WHITEWEREWOLF";
@@ -46,6 +68,20 @@ EOF;
       echo "Table dropped successfully\n";
    }
 
+
+// try {
+//    $db->exec($query_string);
+//    echo "New Game starts. ";
+// } catch(PDOException $e) {
+//    echo $e->getMessage();
+// }
+
+// try {
+//    $db->exec($sql);
+//    echo "Close this window and go back to previous page.";
+// } catch(PDOException $e) {
+//    echo $e->getMessage();
+// }
    $ret_new = pg_query($db,$sql);
    if(!$ret_new) {
       echo "An error occured while creating a table.\n";

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,204 +19,27 @@
 </script>
 
 
-<link rel="stylesheet" type="text/css" href="style.css">
+<!-- <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="stylesheet/Moderator_style.css"> -->
+
+<!-- google cloud storage links -->
+<link rel="stylesheet" type="text/css" href="https://storage.cloud.google.com/werewolf_static/Moderator_style.css">
+<link rel="stylesheet" type="text/css" href="https://storage.cloud.google.com/werewolf_static/style.css">
+
 
 <script src="https://cdn.jsdelivr.net/npm/gojs/release/go.js"></script>
 
-<!-- A list of function to make sure that the moderators know who is werewolf -->
+<!-- <script src="js/Moderator.js"> </script> -->
 
-<script type="text/javascript">
+<script src="js/ModeratorNew.js"> </script>
 
-  $(document).ready(function(){ /* PREPARE THE SCRIPT */
-    $("#check").change(function(){ /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
-      var checked = $(this).val(); /* GET THE VALUE OF THE SELECTED DATA */
-      var dataString = "the seer checked="+checked; /* STORE THAT TO A DATA STRING */
+<!-- php -->
 
-      $.ajax({ /* THEN THE AJAX CALL */
-        type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
-        url: "get_data.php", /* PAGE WHERE WE WILL PASS THE DATA */
-        data: dataString, /* THE DATA WE WILL BE PASSING */
-        success: function(result){ /* GET THE TO BE RETURNED DATA */
-          $("#show").html(result); /* THE RETURNED DATA WILL BE SHOWN IN THIS DIV */
-        }
-      });
+<!-- <script src="https://storage.cloud.google.com/werewolf_php/CreateTable.php"></script> -->
 
-    });
-  });
-</script>
-
-<script type="text/javascript">
-
-  $(document).ready(function(){ /* PREPARE THE SCRIPT */
-    $("#check_three").change(function(){ /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
-      var checked = $(this).val(); /* GET THE VALUE OF THE SELECTED DATA */
-      var dataString = "the seer checked="+checked; /* STORE THAT TO A DATA STRING */
-
-      $.ajax({ /* THEN THE AJAX CALL */
-        type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
-        url: "get_data.php", /* PAGE WHERE WE WILL PASS THE DATA */
-        data: dataString, /* THE DATA WE WILL BE PASSING */
-        success: function(result){ /* GET THE TO BE RETURNED DATA */
-          $("#show_three").html(result); /* THE RETURNED DATA WILL BE SHOWN IN THIS DIV */
-        }
-      });
-
-    });
-  });
-</script>
-
-<script type="text/javascript">
-
-  $(document).ready(function(){ /* PREPARE THE SCRIPT */
-    $("#check_four").change(function(){ /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
-      var checked = $(this).val(); /* GET THE VALUE OF THE SELECTED DATA */
-      var dataString = "the seer checked="+checked; /* STORE THAT TO A DATA STRING */
-
-      $.ajax({ /* THEN THE AJAX CALL */
-        type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
-        url: "get_data.php", /* PAGE WHERE WE WILL PASS THE DATA */
-        data: dataString, /* THE DATA WE WILL BE PASSING */
-        success: function(result){ /* GET THE TO BE RETURNED DATA */
-          $("#show_four").html(result); /* THE RETURNED DATA WILL BE SHOWN IN THIS DIV */
-        }
-      });
-
-    });
-  });
-</script>
-
-
-
-<!-- change werewolf setting -->
-
-<script>
-$(document).on('change', '.div-toggle', function() {
-  var target = $(this).data('target');
-  var show = $("option:selected", this).data('show');
-  $(target).children().addClass('hide');
-  $(show).removeClass('hide');
-});
-$(document).ready(function(){
-	$('.div-toggle').trigger('change');
-});
-
-</script>
-
-<!-- disable the submit button after submit -->
-
-<!-- <script>
-$(document).ready(setup);
-
-function setup () {
-    $("form").on("submit", function () {
-        $(this).find(":submit").prop("disabled", true);
-    });
-}
-
-</script> -->
-
-<!-- A list of onclick function to calculate the number of time the form is submitted -->
-<script type="text/javascript">
-var clicks = 0;
-function onClick_One() {
- clicks += 1;
- document.getElementById("clicks").innerHTML = clicks;
-  };
-</script>
-
-
-<script type="text/javascript">
-var clicks2 = 0;
-function onClick_Two() {
- clicks2 += 1;
- document.getElementById("clicks2").innerHTML = clicks2;
-  };
-</script>
-
-<script type="text/javascript">
-var clicks3 = 0;
-function onClick_Three() {
- clicks3 += 1;
- document.getElementById("clicks3").innerHTML = clicks3;
-  };
-</script>
-
-
-<script type="text/javascript">
-var clicks4 = 0;
-function onClick_four() {
- clicks4 += 1;
- document.getElementById("clicks4").innerHTML = clicks4;
-  };
-</script>
-
-
-<script type="text/javascript">
-var clicks5 = 0;
-function onClick_five() {
- clicks5 += 1;
- document.getElementById("clicks5").innerHTML = clicks5;
-  };
-</script>
-
-
-<script type="text/javascript">
-var clicks6 = 0;
-function onClick_six() {
- clicks6 += 1;
- document.getElementById("clicks6").innerHTML = clicks6;
-  };
-</script>
-
-
-<script type="text/javascript">
-var clicks7 = 0;
-function onClick_seven() {
- clicks7 += 1;
- document.getElementById("clicks7").innerHTML = clicks7;
-  };
-</script>
-
-<script type="text/javascript">
-var clicks8 = 0;
-function onClick_eight() {
- clicks8 += 1;
- document.getElementById("clicks8").innerHTML = clicks8;
-  };
-</script>
 
 </head>
 
-<style>
-.hide {
-  display: none;
-}
-
-input[type=submit] {
-  background-color: #0F559E;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #7D0B5F;
-}
-
-div.sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  background-color:#FAD7A0;
-  padding: 15px;
-  font-size: 20px;
-}
-
-
-</style>
 
 <body>
 <div class="topnav">
@@ -226,7 +51,8 @@ div.sticky {
 </div>
 
 <div class="title-img">
-<img src="Pictures/bg.jpg" alt="Responsive image"> <br><br><br>
+<img src="https://storage.cloud.google.com/werewolf_static/bg.jpg" alt="Responsive image"> <br><br><br>
+<!-- <img src="Pictures/bg.jpg" alt="Responsive image"> <br><br><br> -->
 </div>
 
 <div class="topheader">
@@ -273,7 +99,7 @@ div.sticky {
 <div class="sticky">
 You can always click the button below to find out how many villagers, special villagers, and werewolves are left in the game. 
 
-<form action="progress.php" method="POST" target="_blank">
+<form action="progress_new.php" method="POST" target="_blank">
 	<input type="submit" class="button" value="Check Progress"> <br> <br>
 </form>
 
@@ -307,9 +133,12 @@ You can always click the button below to find out how many villagers, special vi
 Press on the Start Button!!!!!
 </p>
 
+
+
 <form action="CreateTable.php" method="POST" target="_blank">
 	<input type="submit" class="button" value="START GAME"> <br> <br>
 </form>
+
 
 <p> 
 	<span style="background-color: #58F2F7">First Step</span>: Distribute all werewolf identity cards and assign players numbers from 1 to 12. Please make sure that almost everyone gets the cards at the same time. </p> 
@@ -328,7 +157,7 @@ Press on the Start Button!!!!!
 </p>
 
 
-			<form action='Insertion.php' method="POST" target="_blank">
+			<form action='InsertionNew.php' method="POST" target="_blank">
 
 				<select name="night_one">
 					<option value="night1">Night1</option>
@@ -339,68 +168,68 @@ Press on the Start Button!!!!!
 				<label for="werewolves">The Three Ordinary Werewolves are:</label>
 				<select id="werewolves" name="werewolves1">
 
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 				</select>
 
 				<select id="werewolves" name="werewolves2">
 
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 				</select>
 
 				<select id="werewolves" name="werewolves3">
 
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 				</select>
 
 				<br>
 
 				<label for="whitewerewolf">The White Werewolf is:</label>
 				<select id="werewolves" name="whitewerewolf">
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 				</select>
 
 				<br>
@@ -409,18 +238,18 @@ Press on the Start Button!!!!!
 				<select name="victim1">
 
 					<option value="">None</option>
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 				</select>
 
 
@@ -430,37 +259,35 @@ Press on the Start Button!!!!!
 
 				<label for="guardian">The Guardian is:</label>
 				<select name="guardian">
-					<option value="">None</option>
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 				</select>
 
 				<label for="guardian">The Person that the Guardian wants to protect is:</label>
 
 				<select name="guardian_protected">
-					<option value="">None</option>
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 				</select>
 
 				<p> Ask the Guardian to close eyes.</p> <br>
@@ -470,39 +297,35 @@ Press on the Start Button!!!!!
 				<label for="seer">The seer is:</label>
 
 				<select name="seer" id="seer">
-
-					<option value="">None</option>
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 				</select>
 
 				<label for="check">The player that the seer wants to check is:</label>
 
 				<select name="check_one" id="check_one">
-
-					<option value="">None</option>
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 				</select>
 
 
@@ -519,18 +342,18 @@ Press on the Start Button!!!!!
 			    <label for="witch">The Witch is</label>
 			    <select name="witch">
 					<option value="">None</option>
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 
 				</select>
 
@@ -539,18 +362,18 @@ Press on the Start Button!!!!!
 				<select name="victim_save">
 
 					<option value="">None</option>
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 				</select>
 
 				<label for="witch_kill">The Person that the witch wants to kill is:</label>
@@ -558,18 +381,18 @@ Press on the Start Button!!!!!
 				<select name="victim_poisoned">
 
 					<option value="">None</option>
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 				</select>
 
 				<p> Ask the witch to close eyes.</p> <br>
@@ -578,28 +401,30 @@ Press on the Start Button!!!!!
 				<label for="knight">The Knight is</label>
 				<select name="knight">
 					<option value="">None</option>
-					<option value="player1">Player1</option>
-					<option value="player2">Player2</option>
-					<option value="player3">Player3</option>
-					<option value="player4">Player4</option>
-					<option value="player5">Player5</option>
-					<option value="player6">Player6</option>
-					<option value="player7">Player7</option>
-					<option value="player8">Player8</option>
-					<option value="player9">Player9</option>
-					<option value="player10">Player10</option>
-					<option value="player11">Player11</option>
-					<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 				</select>
 
 
 			    <p>The Knight could use his power as long as he is not poisoned by the witch. Let the knight know if he could use his power or not. Ask the Knight to close eyes. <br>
 			    </p>
 
-			    <input type=submit name="submit1" value="submit" onClick="onClick_One()"> 
+			    <input type=submit name="submit1" value="submit" onclick="onClick('clicks1',this)">
+			    
 			</form> 
 
-			<p><span style="background-color: #F69D9A">You have submitted the content <a id="clicks">0</a> time.</span> </p>
+			<p><span style="background-color: #F69D9A">You have submitted the content <a id="clicks1">0</a> time.</span> </p>
+
 
 		<br>
 
@@ -618,14 +443,15 @@ Press on the Start Button!!!!!
 		<p> Now, if there's any players died on the first night, announce their numbers to everyone and then ask them to leave their last statements; if no one died on the first night, announce that everyone was safe. Press the "reveal death" button below. </p>
 
 
-		<form action="Retrieve.php" method="POST" target="_blank">
+		<form action="RetrieveNew.php" method="POST" target="_blank">
 			<input type="submit" class="button" name="reveal_death_one" value="Reveal Death"><br><br>
 		</form>
 
 
+
 		<span style="background-color: #58F2F7">Discussion</span>: <br>
 
-		<form action='Insertion.php' method=POST target="_blank">
+		<form action='InsertionNew.php' method=POST target="_blank">
 
 		<select name="day_one">
 		<option value="day1">Day1</option>
@@ -634,39 +460,42 @@ Press on the Start Button!!!!!
 		<p> Ask the sheriff to determine speaking order and invite all players to make statements. </p>
 
 		<label for="knight">The person that the Knight challenged is:</label>
-		<select name="knight_challenged_first">
+		<select name="knight_challenged_first" id="knight_challenge">
 				<option value="">None</option>
-				<option value="player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 		</select>
+
+		<div id="challenged_first">
+		</div>
 
 		<br>
 
 		<label for="whitewerewolf">The person that the Whitewerewolf killed is:</label>
 		<select name="whitewerewolf_killed_first">
 				<option value="">None</option>
-				<option value="player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 		</select>
 
 
@@ -675,18 +504,18 @@ Press on the Start Button!!!!!
 		<label for="werewolfexploded">If ordinary werewolf exploded, put the player's number in the dropdown:</label>
 		<select name="werewolfexploded_first">
 				<option value="">None</option>
-				<option value="player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 		</select>
 
 		<br>
@@ -699,25 +528,25 @@ Press on the Start Button!!!!!
 
 		<label for="vote">The person that get voted out is:</label>
 		<select name="voted_first">
-				<option value="Player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+					<option value="Player5">Player5</option>
+					<option value="Player6">Player6</option>
+					<option value="Player7">Player7</option>
+					<option value="Player8">Player8</option>
+					<option value="Player9">Player9</option>
+					<option value="Player10">Player10</option>
+					<option value="Player11">Player11</option>
+					<option value="Player12">Player12</option>
 		</select>
 
 	<br>
 
 	<p>The person that get voted out today can leave a statement. </p>
 
-	<input type=submit name="submit2" value="submit" onClick="onClick_Two()"><br> 
+	<input type=submit name="submit2" value="submit" onclick="onClick('clicks2',this)"><br> 
 
 	</form>
 
@@ -725,755 +554,12 @@ Press on the Start Button!!!!!
 
 	<br>
 
+	<div class="Content"></div>
+
 	<!-- begin of night two  -->
 
-	<div class="parallax-image-one"></div> <br>
-
-	<span style="background-color: #58F2F7">Night Time</span>: <br>
-
-	<form action='Insertion.php' method="POST" target="_blank">
-
-	<select name="night_two">
-	<option value="night2">Night2</option>
-	</select>
-
-	<br>
-
-	<p><1> Ask all players to close eyes. </p>
-	<p><2> Ask all <u class="dotted"> werewolves </u>  to open eyes. </p>
-	
-	<label for="victim">The victim tonight is:</label>
-	<select name="victim2">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<br>
-
-	<p>Give werewolves some time to use their body language to discuss general strategies. Then, ask all werewolves to close their eyes. </p> <br>
-
-	<p> <3> Ask the <u class="dotted"> Guardian </u> to open eyes. </p>
-
-	<label for="guardian"> The person that the Guardian wants to protect is: </label>
-	<select name="guardian_protected_two">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<p> Ask the Guardian to close eyes. </p><br>
-
-	<p> <4> Ask the <u class="dotted"> Seer </u> to open eyes. </p>
-	<label for="seer"> The person that the Seer checks is: </label>
-	<select name="check_two" id="check">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-
-	<div id="show">
-				
-	</div>
-
-	<p> Ask the Seer to close eyes. </p><br>
-
-	<p> <5> Ask the <u class="dotted"> Witch </u> to open eyes. Without making any noise, tell the witch who is the player that get killed by werewolves. </p>
-	<label for="witch"> The person that the Witch wants to save is: </label>
-	<select name="victim_saved_two">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<label for="witch"> The person that the Witch wants to kill is: </label>
-	<select name="victim_poisoned_two">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<p> Ask the Witch to close eyes. </p> <br>
-
-	<p> <6> Ask the <u class="dotted"> Knight </u> to open eyes. </p>
-	<p> The Knight could use his power as long as he is not poisoned by the Witch. Let the Knight know if he could use his power or not. Ask the Knight to close eyes. </p>
-
-	<input type=submit name="submit3" onClick="onClick_Three()">
-
-	</form>
-
-	<p><span style="background-color: #F69D9A">You have submitted the content <a id="clicks3">0</a> time.</span> </p>
-
-
-
-	<div class="parallax-image-two"></div> <br>
-
-	<!-- begin of day two  -->
-
-
-	<span style="background-color: #58F2F7">Announce death of the second night</span>: <br>
-	<p> Now, click on the button below and asked the player that died in the second night to leave.  </p> 
-
-	
-	<form action="Retrieve.php" method="POST" target="_blank">
-		<input type="submit" class="button" name="reveal_death_two" value="Reveal Death"> <br> <br>
-	</form>
-
-	<p> Now, discussion begins. The sheriff can now determine the speaking order. (Start from the left or right side of the person died.) The sheriff could pass the badge to someone else or destroy the badge if he/she/they is the person dies. </p>
-
-	<!-- begin of day two discussion -->
-
-	<span style="background-color: #58F2F7">Discussion</span>: <br>
-	<form action="Insertion.php" method="POST" target="_blank">
-
-	<select name="day_two">
-	<option value="day2">Day2</option>
-	</select>
-
-		<p> Ask the sheriff to determine speaking order and invite all players to make statements. </p>
-
-		<label for="knight">The person that the Knight challenged is:</label>
-		<select name="knight_challenged_second">
-				<option value="">None</option>
-				<option value="player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
-		</select>
-
-		<br>
-
-		<label for="whitewerewolf">The person that the Whitewerewolf killed is:</label>
-		<select name="whitewerewolf_killed_second">
-				<option value="">None</option>
-				<option value="player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
-		</select>
-
-		<br>
-
-		<label for="werewolfexploded">If ordinary werewolf exploded, put the player's number in the dropdown:</label>
-		<select name="werewolfexploded_second">
-				<option value="">None</option>
-				<option value="player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
-		</select>
-
-		<br><br>
-
-	<!-- begin of day two voting -->
-
-
-	<span style="background-color: #58F2F7">Voting</span>: <br>
-
-	<label for="vote">The person that get voted out is:</label>
-	<select name="voted_second">
-				<option value="Player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
-	</select>
-
-	<br>
-
-	<p>The person that get voted out today can leave a statement. </p>
-
-	<input type=submit name="submit4" onClick="onClick_four()">
-
-	</form>
-
-	<p><span style="background-color: #F69D9A">You have submitted the content <a id="clicks4">0</a> time.</span> </p>
-
-  
-
-   <!-- begin of night 3 -->
-
-	<div class="parallax-image-one"></div> <br>
-
-	<span style="background-color: #58F2F7">Night Time</span>: <br>
-
-	<form action='Insertion.php' method="POST" target="_blank">
-
-	<select name="night_three">
-	<option value="night3">Night3</option>
-	</select>
-
-	<br>
-
-	<p><1> Ask all players to close eyes. </p>
-	<p><2> Ask all <u class="dotted"> werewolves </u>  to open eyes. </p>
-	
-	<label for="victim">The victim tonight is:</label>
-	<select name="victim3">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<br>
-
-	<p>Give werewolves some time to use their body language to discuss general strategies. Then, ask all werewolves to close their eyes. </p> <br>
-
-	<p> <3> Ask the <u class="dotted"> Guardian </u> to open eyes. </p>
-
-	<label for="guardian"> The person that the Guardian wants to protect is: </label>
-	<select name="guardian_protected_three">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<p> Ask the Guardian to close eyes. </p><br>
-
-	<p> <4> Ask the <u class="dotted"> Seer </u> to open eyes. </p>
-	<label for="seer"> The person that the Seer checks is: </label>
-	<select name="check_three" id="check_three">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-
-	<div id="show_three">
-				
-	</div>
-
-	<p> Ask the Seer to close eyes. </p><br>
-
-	<p> <5> Ask the <u class="dotted"> Witch </u> to open eyes.  Without making any noise, tell the witch who is the player that get killed by werewolves.</p>
-	<label for="witch"> The person that the Witch wants to save is: </label>
-	<select name="victim_saved_three">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<label for="witch"> The person that the Witch wants to kill is: </label>
-	<select name="victim_poisoned_three">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<p> Ask the Witch to close eyes. </p> <br>
-
-	<p> <6> Ask the <u class="dotted"> Knight </u> to open eyes. </p>
-	<p> The Knight could use his power as long as he is not poisoned by the Witch. Let the Knight know if he could use his power or not. Ask the Knight to close eyes. </p>
-
-	<input type=submit name="submit5" onClick="onClick_five()" id="submitorder">
-
-	</form>
-
-	<p><span style="background-color: #F69D9A">You have submitted the content <a id="clicks5">0</a> time.</span> </p>
-
-	<div class="parallax-image-two"></div> <br>
-
-    <!-- begin of day three  -->
-
-	<span style="background-color: #58F2F7">Announce death of the third night</span>: <br>
-	<p> Now, click on the button below and asked the player that died in the third night to leave.  </p> 
-
-	<!-- begin of day 3 discussion -->
-
-	
-	<form action="Retrieve.php" method="POST" target="_blank">
-		<input type="submit" class="button" name="reveal_death_three" value="Reveal Death"> <br> <br>
-	</form>
-
-	<p> Now, discussion begins. The sheriff can now determine the speaking order. (Start from the left or right side of the person died.) The sheriff could pass the badge to someone else or destroy the badge if he/she/they is the person dies.</p>
-
-	<span style="background-color: #58F2F7">Discussion</span>: <br>
-
-	<form action="Insertion.php" method="POST" target="_blank">
-
-	<select name="day_three">
-	<option value="day3">Day3</option>
-	</select>
-
-	<p> Ask the sheriff to determine speaking order and invite all players to make statements.</p>
-
-
-		<label for="knight">The person that the Knight challenged is:</label>
-		<select name="knight_challenged_third">
-				<option value="">None</option>
-				<option value="player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
-		</select>
-
-		<br>
-
-		<label for="whitewerewolf">The person that the Whitewerewolf killed is:</label>
-		<select name="whitewerewolf_killed_third">
-				<option value="">None</option>
-				<option value="player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
-		</select>
-
-		<br>
-
-		<label for="werewolfexploded">If ordinary werewolf exploded, put the player's number in the dropdown:</label>
-		<select name="werewolfexploded_third">
-				<option value="">None</option>
-				<option value="player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
-		</select>
-
-	<br>
-	<br>
-
-	<!-- begin of day 3 voting -->
-
-	<span style="background-color: #58F2F7">Voting</span>: <br>
-
-	<label for="vote">The person that get voted out is:</label>
-	<select name="voted_third">
-				<option value="Player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
-	</select>
-
-	<br>
-
-		<p> Ask the sheriff to determine speaking order and invite all players to make statements. </p>
-
-	<p>The person that get voted out today can leave a statement. </p>
-
-	<input type=submit name="submit6" onClick="onClick_six()" id="submitorder">
-
-	</form>
-
-	<p><span style="background-color: #F69D9A">You have submitted the content <a id="clicks6">0</a> time.</span> </p>
-
-
-	<div class="parallax-image-one"></div> <br>
-
-<!-- Begin of night 4 -->
-
-	<span style="background-color: #58F2F7">Night Time</span>: <br>
-
-	<form action='Insertion.php' method="POST" target="_blank">
-
-	<select name="night_four">
-	<option value="night4">Night4</option>
-	</select>
-
-	<br>
-
-	<p><1> Ask all players to close eyes. </p>
-	<p><2> Ask all <u class="dotted"> werewolves </u>  to open eyes. </p>
-	
-	<label for="victim">The victim tonight is:</label>
-	<select name="victim4">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<br>
-
-	<p>Give werewolves some time to use their body language to discuss general strategies. Then, ask all werewolves to close their eyes. </p> <br>
-
-	<p> <3> Ask the <u class="dotted"> Guardian </u> to open eyes. </p>
-
-	<label for="guardian"> The person that the Guardian wants to protect is: </label>
-	<select name="guardian_protected_four">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<p> Ask the Guardian to close eyes. </p><br>
-
-	<p> <4> Ask the <u class="dotted"> Seer </u> to open eyes. </p>
-	<label for="seer"> The person that the Seer checks is: </label>
-	<select name="check_four" id="check_four">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<div id="show_four">
-				
-	</div>
-
-	<p> Ask the Seer to close eyes. </p><br>
-
-	<p> <5> Ask the <u class="dotted"> Witch </u> to open eyes. </p>
-	<label for="witch"> The person that the Witch wants to save is: </label>
-	<select name="victim_saved_four">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<label for="witch"> The person that the Witch wants to kill is: </label>
-	<select name="victim_poisoned_four">
-	<option value="">None</option>
-	<option value="player1">Player1</option>
-	<option value="player2">Player2</option>
-	<option value="player3">Player3</option>
-	<option value="player4">Player4</option>
-	<option value="player5">Player5</option>
-	<option value="player6">Player6</option>
-	<option value="player7">Player7</option>
-	<option value="player8">Player8</option>
-	<option value="player9">Player9</option>
-	<option value="player10">Player10</option>
-	<option value="player11">Player11</option>
-	<option value="player12">Player12</option>
-	</select>
-
-	<p> Ask the Witch to close eyes. </p> <br>
-
-	<p> <6> Ask the <u class="dotted"> Knight </u> to open eyes. </p>
-	<p> The Knight could use his power as long as he is not poisoned by the Witch. Let the Knight know if he could use his power or not. Ask the Knight to close eyes. </p>
-
-	<input type=submit name="submit7" onClick="onClick_seven()" id="submitorder">
-
-	</form>
-
-<!-- Begin of day 4 -->
-
-	<p><span style="background-color: #F69D9A">You have submitted the content <a id="clicks7">0</a> time.</span> </p>
-
-
-	 <div class="parallax-image-two"></div> <br>
-
-	<span style="background-color: #58F2F7">Announce death of the fourth night</span>: <br>
-	<p> Now, click on the button below and asked the player that died in the fourth night to leave.  </p> 
-
-	<form action="Retrieve.php" method="POST" target="_blank">
-		<input type="submit" class="button" name="reveal_death_four" value="Reveal Death"> <br> <br>
-	</form>
-
-<!-- Begin of day 4 -->
-
-	    <span style="background-color: #58F2F7">Discussion</span>: <br>
-		<form action='Insertion.php' method=POST target="_blank">
-
-		<select name="day_four">
-		<option value="day4">Day4</option>
-		</select><br>
-
-		<p> Ask the sheriff to determine speaking order and invite all players to make statements. </p>
-
-		<label for="knight">The person that the Knight challenged is:</label>
-		<select name="knight_challenged_four">
-				<option value="">None</option>
-				<option value="player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
-		</select>
-
-		<br>
-
-		<label for="whitewerewolf">The person that the Whitewerewolf killed is:</label>
-		<select name="whitewerewolf_killed_four">
-				<option value="">None</option>
-				<option value="player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
-		</select>
-
-		<br>
-
-		<label for="werewolfexploded">If ordinary werewolf exploded, put the player's number in the dropdown:</label>
-		<select name="werewolfexploded_fourth">
-				<option value="">None</option>
-				<option value="player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
-		</select>
-
-		<br>
-		<br>
-
-
-		<span style="background-color: #58F2F7">Voting</span>: <br>
-
-		<label for="vote">The person that get voted out is:</label>
-		<select name="voted_four">
-				<option value="Player1">Player1</option>
-				<option value="player2">Player2</option>
-				<option value="player3">Player3</option>
-				<option value="player4">Player4</option>
-				<option value="player5">Player5</option>
-				<option value="player6">Player6</option>
-				<option value="player7">Player7</option>
-				<option value="player8">Player8</option>
-				<option value="player9">Player9</option>
-				<option value="player10">Player10</option>
-				<option value="player11">Player11</option>
-				<option value="player12">Player12</option>
-		</select>
-
-	<br>
-
-	<p>The person that get voted out today can leave a statement. </p>
-
-	<input type=submit name="submit8" onClick="onClick_eight()" id="submitorder"> 
-
-	</form>
-
-	<p><span style="background-color: #F69D9A">You have submitted the content <a id="clicks8">0</a> time.</span> </p>
-
-
-	<div class="parallax-image-one"></div> <br>
-
-<!-- Begin of day 4 -->
-
-
-
-
-
-
-
-
-
-
+	<button class="button" id="next" type="button" onclick="Next()">Next</button>
+	<!-- end of button -->
 
 
 
@@ -1503,19 +589,21 @@ Press on the Start Button!!!!!
 <span style="background-color: #EAFB13"> Notice Specific to this setting:</span> <br>
 
 <p>
-<1> King of werewolf loses his power only when he get poisoned by the witch. If he get shot by the hunter, he can still use his power.<br>
-<2> Both hunter and king of werewolf are not allowed to reveal their identity cards when they use their powers. <br>
-<3> In theory, King of werewolf could explode himself during day time and immediately end discussion. But if he explodes during day time, he cannot take away a player. He can use his power only when he get voted out by the village. 
+<1> King of werewolf loses power when it got poisoned by the witch. If it got shot by the hunter, it can still use power.<br>
+<2> Both hunter and Ling of werewolf are not allowed to reveal their identity cards when they use their powers. <br>
+<3> In theory, King of werewolf could explode himself during day time like other ordinary werewolves and immediately end discussion. But if it explodes during day time, it cannot take away a player. It can use his power only when he get voted out by the village. 
 </p>
 
 <div class="parallax-image-one"></div> <br>
 
 
 <span style="background-color: #EAFB13"> Start the Game:</span> <br> 
+
+
 <p> 
 	<span style="background-color: #58F2F7">First Step</span>: Distribute all werewolf identity cards and assign players numbers from 1 to 12. Please make sure that almost everyone gets the cards at the same time. </p> 
 <p>
-	<span style="background-color: #58F2F7">Second Step</span>: Announce that the game starts and ask all players to close their eyes. <br>
+	<span style="background-color: #58F2F7">Second Step</span>: Announce that the game starts and ask all players to close their eyes.<br>
 </p>
 
 <p>
@@ -1523,7 +611,7 @@ Press on the Start Button!!!!!
 	Wake up werewolves and the special villagers in the following order and follow the instructions below. 
 </p>
 
-<p> <1> Ask all <u class="dotted"> werewolves </u> to open their eyes and ask the King of werewolf to raise his/her/their hands to indicate that he/she/their is the King of werewolf. <br>
+<p> <1> Ask all <u class="dotted"> werewolves </u> to open their eyes and ask the King of werewolf to raise hands to indicate identity. <br>
 
 	<2> Give werewolves some time to silently discuss their strategies. After around 3 minutes, ask werewolves to close eyes. 
 </p>
@@ -1538,7 +626,15 @@ Press on the Start Button!!!!!
 
 
 
+
 </body>
 
 
+
+
+
 </html>
+
+
+
+

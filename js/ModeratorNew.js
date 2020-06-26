@@ -43,7 +43,7 @@ $(document).ready(function(){
 //connect with Knight.php
 
       var ajax_knight = {
-        url:"knight.php",
+        url:"knight_new.php",
         type:"POST",
         success: function(result) {
           $(challenged_id).html(result);
@@ -86,7 +86,7 @@ $(document).ready(function(){
     $.fn.seer_check = function(check_id) {
 
       var ajax_seer = {
-        url:"get_data.php",
+        url:"get_data_new.php",
         type:"POST",
         success: function(result) {
           $(check_id).html(result);
@@ -327,7 +327,7 @@ function createNight() {
   ///start creating form 
 
   var form = document.createElement("form");
-  form.setAttribute("action", "Insertion.php");
+  form.setAttribute("action", "InsertionNew.php");
   form.setAttribute("method", "POST");
   form.setAttribute("target", "_blank");
   div[0].appendChild(form);
@@ -384,7 +384,7 @@ function createNight() {
 
   selectElem.addEventListener("change", function(){
     var ajax_seer = {
-      url: "get_data.php",
+      url: "get_data_new.php",
       type:"POST",
       success:function(result) {
         $(id2).html(result); //id is an id that we constructred a few lines above
@@ -454,7 +454,7 @@ function countCreateDay(){
 /////////////////////FUNCTION TWO: REVEAL DEATH 
 function RevealDeath(parentElem, RevealName) {
   var form = document.createElement("form");
-  form.setAttribute("action", "Retrieve.php");
+  form.setAttribute("action", "RetrieveNew.php");
   form.setAttribute("method", "POST");
   form.setAttribute("target", "_blank");
 
@@ -536,7 +536,7 @@ function createDay() {
 
   ///start creating form
   var form = document.createElement("form");
-  form.setAttribute("action", "Insertion.php");
+  form.setAttribute("action", "InsertionNew.php");
   form.setAttribute("method", "POST");
   form.setAttribute("target", "_blank");
   div[0].appendChild(form);
@@ -578,7 +578,7 @@ function createDay() {
 
   selectElem.addEventListener("change", function(){
     var ajax_knight = {
-      url: "knight.php",
+      url: "knight_new.php",
       type:"POST",
       success:function(result) {
         $(challenged).html(result); //challenged is an id that we constructred a few lines above
@@ -646,48 +646,54 @@ function createDay() {
 
 }
 
-/////////////////////FUNCTION: GENERATE GENERAL NOTICE 
-function create_list(parentElem, text) {
-    var p = document.createElement("p");
-    p.innerHTML=text;
-    linebreak(p);
-
-    parentElem.appendChild(p);
-}
+//////////////////////////////////////////
 
 
+// var nvar=2; //start from night 2
+// var dvar = 2; //start from day 2
+// var newvar = 2; //general calculation: how many times the users press on "hide"
 
-function create_notice (classElem, id) {
+// function Delete() {
 
-  // get div;
-  var div=document.getElementsByClassName(classElem);
+//   if  (newvar % 2 === 0)  {
+//   console.log(newvar);
+//   console.log("this is night");
+//   var classnum = "Content Night" + nvar;
+//   var elem = document.getElementById(classnum);
 
-  // create headline "General Notice"
-  var p = document.createElement("p");
-  var span = document.createElement("span");
-  var txt = document.createTextNode("General Notice:");
+//   elem.style.display = "none";
 
-  // create headline: 'general notice'
-  span.style.cssText="background-color:#EAFB13";
+//   // elem.remove();
+//   nvar++;
 
-  span.appendChild(txt);
-  p.appendChild(span);
-  div[0].appendChild(p);
+//   // while(elem > 0){
+//   //       elem[0].parentNode.removeChild(elem[0]);
+//   //       nvar++;
+//   //} //end of while loop
+    
+//   } else {
+//   console.log(newvar);
+//   console.log("this is day");
 
-  linebreak(p);
+//   var classnum = "Content Day" + dvar;
+//   var elem = document.getElementById(classnum);
 
-  create_list(div[0], "<1> Encourage players not to interrupt each other during discussion.");
-  create_list(div[0], "<2> Encourage players to vote at the same time.");
-  create_list(div[0], "<3> Werewolves are allowed to kill any players, including themselves :)");
-  create_list(div[0], "<4> Please do not reveal players' identity cards when they die. Usually, when players die at night (get poisoned by the witch or killed by werewolves), they could not leave their last statements at day time, except for the players that die on the first night. Players get voted out by the village at day time can always leave their statements.");
-  create_list(div[0], "<5> The Guardian and the Witch do not share information at night. If a person is protected by the Guardian and the Witch, the person dies of 'overhealling' and powers/potions get wasted.");
-  create_list(div[0], "<6> When the Witch dies, she cannot use her potion to save herself; but she can use the other potion to kill a player.");
+//   elem.style.display = "none";
+//   // elem.remove();
+//   dvar++;
 
-  // disable the button after click 
 
-  document.getElementById(id).disabled = true; 
 
-}
+
+// }
+
+// console.log(classnum);
+
+// newvar++;
+// hide_count++;
+// i=i-1;
+
+// }
 
 
 

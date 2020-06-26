@@ -6,8 +6,15 @@
    $port        = "port = 5432";
    $dbname      = "dbname = werewolf";
    $credentials = "user = postgres";
+  
+
+
 
    $db = pg_connect( "$host $port $dbname $credentials"  );
+
+
+
+
    if(!$db) {
       echo "Error : Unable to open database\n";
    } else {
@@ -46,7 +53,7 @@
       '$_POST[victim_poisoned]'
    )");
 
-   if(!$ret) {
+   if(!$ret_sec) {
       echo pg_last_error($db);
    } else {
       echo "Your information is recorded. \n Please return to continue the game. ";
@@ -112,12 +119,24 @@ function insertion_day ($day_num, $knight_challenge, $whitewerewolf, $voted_out,
    $dbname      = "dbname = werewolf";
    $credentials = "user = postgres";
 
-   $db = pg_connect( "$host $port $dbname $credentials"  );
+   $db = pg_connect( "$host $port $dbname $credentials");
    if(!$db) {
       echo "Error : Unable to open database\n";
    } else {
       echo "";
    }
+
+
+
+   $db = pg_connect( "$host $port $dbname $credentials");
+
+
+   if(!$db) {
+      echo "Error : Unable to open database\n";
+   } else {
+      echo "";
+   }
+
 
    $query_string = "DELETE FROM WHITEWEREWOLF WHERE TIME='$day_num'";
 
@@ -156,12 +175,24 @@ function insertion_night ($night_num, $victim_name, $guardian_protected_name, $c
    $dbname      = "dbname = werewolf";
    $credentials = "user = postgres";
 
-   $db = pg_connect( "$host $port $dbname $credentials"  );
+   $db = pg_connect( "$host $port $dbname $credentials");
    if(!$db) {
       echo "Error : Unable to open database\n";
    } else {
       echo "";
    }
+
+
+   $db = pg_connect( "$host $port $dbname $credentials");
+
+   // $db=pg_connect($dsn $dbUser $dbPass);
+
+   if(!$db) {
+      echo "Error : Unable to open database\n";
+   } else {
+      echo "";
+   }
+
 
 
    $query_string = "DELETE FROM WHITEWEREWOLF WHERE TIME='$night_num';";
